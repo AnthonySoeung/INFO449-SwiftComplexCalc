@@ -28,6 +28,72 @@ print("Welcome back to the UW Calculator")
 //: IMPORTANT: If any tests are commented out, you will be graded a zero (0)! You should never be in the habit of eliminating tests to make the code pass.
 //:
 class Calculator {
+    func add (lhs: Int, rhs: Int) -> Int {
+        return lhs + rhs;
+    }
+    func subtract (lhs: Int, rhs: Int) -> Int {
+        return lhs - rhs;
+    }
+    func multiply (lhs: Int, rhs: Int) -> Int {
+        return lhs * rhs;
+    }
+    func divide (lhs: Int, rhs: Int) -> Int {
+        if rhs != 0 {
+            return lhs / rhs;
+        } else {
+            return 0;
+        }
+    }
+    func mathOp(lhs: Int, rhs: Int, op: (Int, Int) -> Int) -> Int {
+        return op(lhs, rhs)
+    }
+    func add (_ values: [Int]) -> Int {
+        var total = 0;
+        for numbers in values {
+            total += numbers;
+        }
+        return total;
+    }
+    
+    func multiply (_ values: [Int]) -> Int {
+        var total = 1;
+        for numbers in values {
+            total *= numbers;
+        }
+        return total;
+    }
+    func count (_ values: [Int]) -> Int {
+        var total = 0;
+        for numbers in values {
+            total += 1;
+        }
+        return total;
+    }
+    func avg (_ values: [Int]) -> Int {
+        var total = add(values);
+        var count = count(values);
+        return total/count;
+    }
+    func mathOp(args: [Int], beg: Int, op: (Int, Int) -> Int) -> Int {
+        var result = beg;
+        for values in args {
+            result = op(result, values);
+        }
+        return result;
+    }
+    func add (lhs: (Int, Int), rhs: (Int, Int)) -> (Int, Int) {
+        return ((lhs.0 + rhs.0), (lhs.1 + rhs.1));
+    }
+    func subtract (lhs: (Int, Int), rhs: (Int, Int)) -> (Int, Int) {
+        return ((lhs.0 - rhs.0), (lhs.1-rhs.1));
+    }
+    func add (lhs:[String: Int], rhs: [String: Int]) -> [String: Int] {
+        return ["x": (lhs["x"] ?? 0) + (rhs["x"] ?? 0), "y": (lhs["y"] ?? 0) + (rhs["y"] ?? 0)];
+    }
+    func subtract (lhs:[String: Int], rhs: [String: Int]) -> [String: Int] {
+        return ["x": (lhs["x"] ?? 0) - (rhs["x"] ?? 0), "y": (lhs["y"] ?? 0) - (rhs["y"] ?? 0)];
+    }
+    
 }
 
 //: Don't change the name of this object (`calc`); it's used in all the tests.
